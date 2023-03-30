@@ -1,4 +1,4 @@
-//productos
+
 const productos = [
   {
     nombre: "Cat Chow",
@@ -39,23 +39,27 @@ const productos = [
 ];
 
 
+//console.log(productos);
 
-function guardarProductos(productos){
+function guardarProductosLS(productos){
     localStorage.setItem("productos", JSON.stringify(productos));
 }
 
 function cargarProductosLS(){
-  return JSON.parse(localStorage.getItem(productos)) || [];
+  return JSON.parse(localStorage.getItem(productos));
 }
 
-guardarProductos(productos);
+guardarProductosLS(productos);
 
 
 function renderProductos() {
   const productos = cargarProductosLS();
+
+  
+  renderProductos();
   let salida = "";
 
-  for (producto of productos) {
+  for (productos of producto) {
     salida += `<div class="col-md-6 my-3">
                <div class="card tex-center">
                <img src="${producto.img}" alt="${producto.nombre}" class="card-img-top" />
@@ -71,9 +75,9 @@ function renderProductos() {
 }
 
 renderProductos();
-renderBotonCarrito();
+/*renderBotonCarrito();
 
-function guardarProductosCarrito(productos) {
+/*function guardarProductosCarrito(productos) {
   localStorage.setItem("carrito", JSON.stringify(productos));
 }
 
@@ -174,7 +178,7 @@ function renderProductosCarrito() {
 }
 
 renderProductosCarrito();
-renderBotonCarrito();
+renderBotonCarrito();*/
 
 
 
