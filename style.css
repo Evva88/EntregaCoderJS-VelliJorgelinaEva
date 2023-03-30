@@ -4,9 +4,20 @@
     box-sizing: border-box; 
   }
 
-    h1 {
+    h1, h2{
         margin: 100px;
         text-align: center;
         font-size: xx-large; 
         color: palevioletred;
-    }   
+    }  
+    
+  
+    .btn{
+        background-color: palevioletred;
+    }
+    
+   .col-md-6{
+    -ms-flex-align: baseline;
+   }
+
+  
