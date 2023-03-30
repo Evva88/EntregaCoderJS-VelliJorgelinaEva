@@ -88,7 +88,7 @@ function vaciarCarrito() {
 }
 
 function estaEnElCarrito(id) {
-  const carrito = cargarProductosCarrito(); //array
+  const carrito = cargarProductosCarrito(); 
   
   return carrito.some(item => item.id === id);
 }
@@ -140,7 +140,7 @@ function renderBotonCarrito() {
 }
  
 function renderProductosCarrito() {
-  const productos = cargarProductosCarrito(); //? productos
+  const productos = cargarProductosCarrito();
   let salida = "";
 
   if (totalProductosCarrito() > 0) {
