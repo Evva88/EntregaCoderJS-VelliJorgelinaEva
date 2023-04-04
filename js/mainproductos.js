@@ -99,7 +99,7 @@ function agregarAlCarrito(id) {
 
 
   if (estaEnElCarrito(id)){
-    let pos= carrito.fintdIndex (item => item.id === id);
+    let pos= carrito.findIndex (item => item.id === id);
     carrito[pos].cantidad += 1;
   }else{
     const productos = buscarProducto(id);
