@@ -1,4 +1,3 @@
-
 const productos = [
   {
     nombre: "Cat Chow",
@@ -34,38 +33,34 @@ const productos = [
     nombre: 'Juguete perrito',
     precio: 300,
     id: 6,
-    img: './assets/j.perro.jpg'
+    img: './assets/CHUPETE-GOMA.jpg'
   }
 ];
 
 
-//console.log(productos);
 
-function guardarProductosLS(productos){
+function guardarProductos(productos){
     localStorage.setItem("productos", JSON.stringify(productos));
 }
 
-function cargarProductosLS(){
-  return JSON.parse(localStorage.getItem(productos));
+function cargarProductos(){
+  return JSON.parse(localStorage.getItem("productos")) || [];
 }
 
-guardarProductosLS(productos);
+guardarProductos(productos);
 
 
 function renderProductos() {
-  const productos = cargarProductosLS();
-
-  
-  renderProductos();
+  const productos = cargarProductos();
   let salida = "";
 
-  for (productos of producto) {
-    salida += `<div class="col-md-6 my-3">
+  for (const producto of productos) {
+    salida += `<div class="col-md-3">
                <div class="card tex-center">
                <img src="${producto.img}" alt="${producto.nombre}" class="card-img-top" />
                <div class="card-body">
-                <p class="card-text">${producto.nombre} ${producto.precio}</p>
-                <p><button class="btn btn-warning" onclick="agregarAlCarrito(${producto.id});" title="Agregar Producto">Agregar (+)</button>
+               <p class="card-text">${producto.nombre} ${producto.precio}</p>
+               <p><button class="btn btn-warning" onclick="agregarAlCarrito(${producto.id});" title="Agregar Producto">Agregar</button>
                </div>
                </div>
                </div>`;
@@ -75,9 +70,9 @@ function renderProductos() {
 }
 
 renderProductos();
-/*renderBotonCarrito();
+renderBotonCarrito();
 
-/*function guardarProductosCarrito(productos) {
+function guardarProductosCarrito(productos) {
   localStorage.setItem("carrito", JSON.stringify(productos));
 }
 
@@ -87,6 +82,8 @@ function cargarProductosCarrito() {
 
 function vaciarCarrito() {
   localStorage.removeItem("carrito");
+
+
   renderProductosCarrito();
   renderBotonCarrito();
 }
@@ -98,36 +95,30 @@ function estaEnElCarrito(id) {
 }
 
 function agregarAlCarrito(id) {
-  const carrito = cargarProductosCarrito();
-  
-  if (estaEnElCarrito(id)) {
-      let pos = carrito.findIndex(item => item.id === id);
-      carrito[pos].cantidad += 1;
-  } else {
-      const producto = buscarProducto(id);
-      producto.cantidad = 1;
-      carrito.push(producto);
+  const carrito= cargarProductosCarrito();
+
+
+  if (estaEnElCarrito(id)){
+    let pos= carrito.fintdIndex (item => item.id === id);
+    carrito[pos].cantidad += 1;
+  }else{
+    const productos = buscarProducto(id);
+    productos.cantidad = 1;
+    carrito.push(productos);
   }
+
 
   guardarProductosCarrito(carrito);
   renderBotonCarrito();    
 }
 
-function eliminarProducto(id) {
-  const carrito = cargarProductosCarrito();
-  const productos = carrito.filter(item => item.id !== id);
-  guardarProductosCarrito(productos);
-  renderProductosCarrito();
-  renderBotonCarrito();
-}
-
-function buscarProducto(id) { //5
-  const productos = cargarProductosLS();
+function buscarProducto(id) { 
+  const productos = cargarProductos();
 
   return productos.find(item => item.id === id); 
 }
 
-function totalProductosCarrito() {
+function totalItemsCarrito() {
   const productos = cargarProductosCarrito();
 
   return productos.reduce((total, item) => total += item.cantidad, 0);
@@ -137,48 +128,22 @@ function totalPagarCarrito() {
   const productos = cargarProductosCarrito();
 
   return productos.reduce((total, item) => total += item.cantidad * item.precio, 0);
-}
+} 
 
 function renderBotonCarrito() {
-  document.getElementById("carrito").innerText = totalProductosCarrito();
+  const salida = `<a href="./pag/carritoCompras.html" id="carrito-container" class="btn  btn-warning primary position-relative">
+                   <img src="./assets/shopping-bag (1).svg" alt="carrito-container" width="32"/>
+                   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">${totalItemsCarrito()}
+                   </span>
+                   </a>`;
+                  
+
+  document.getElementById("carrito-container").innerHTML = salida;
 }
  
-function renderProductosCarrito() {
-  const productos = cargarProductosCarrito();
-  let salida = "";
 
-  if (totalProductosCarrito() > 0) {
-      salida += `<table class="table">
-      <tr>
-      <td colspan="5" class="text-end"><button class="btn btn-warning" onclick="vaciarCarrito()">Vaciar Carrito</button></td>
-      <tr>`;
 
-      for (producto of productos) {
-          salida += `<tr>
-          <td><img src="${"images/" + producto.imagen}" alt="${producto.nombre}" width="80" /></td>
-          <td>${producto.nombre}</td>
-          <td>${producto.cantidad} X $${producto.precio}</td>
-          <td>$${producto.cantidad * producto.precio}</td>
-          <td class="text-end"><button class="btn btn-warning" onclick="eliminarProducto(${producto.id});" title="Eliminar Producto"><img src="images/trash.svg" alt="Eliminar Producto" width="16" /></button></td>
-          </tr>`;
-      }
 
-      salida += `<tr>
-      <td colspan="3">Total a Pagar</td>
-      <td>$${totalPagarCarrito()}</td>
-      <td>&nbsp;</td>
-      </tr>`;
-      salida += `</table>`;
-  } else {
-      salida = `<div class="alert alert-danger text-center" role="alert">No se agregaron Productos en el Carrito!</div>
-    `
-  }
-
-  document.getElementById("productos").innerHTML = salida;
-}
-
-renderProductosCarrito();
-renderBotonCarrito();*/
 
 
 
