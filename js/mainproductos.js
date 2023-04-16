@@ -34,7 +34,31 @@ const productos = [
     precio: 300,
     id: 6,
     img: './assets/CHUPETE-GOMA.jpg'
-  }
+  },
+  {
+    nombre: 'Royal Canin',
+    precio: 14000,
+    id: 7,
+    img: './assets/royalGato.jpg'
+  },
+  {
+    nombre: 'Purina Gato',
+    precio: 10000,
+    id: 8,
+    img: './assets/purinaGato.webp'
+  },
+  {
+    nombre: 'Purina Perro',
+    precio: 11000,
+    id: 9,
+    img: './assets/purina.png'
+  },
+  {
+    nombre: 'Whiskas Sardina',
+    precio: 230,
+    id: 10,
+    img: './assets/sardina.webp'
+  },
 ];
 
 
@@ -132,7 +156,7 @@ function totalPagarCarrito() {
 
 function renderBotonCarrito() {
   const salida = `<a href="./pag/carritoCompras.html" id="carrito-container" class="btn  btn-warning primary position-relative">
-                   <img src="./assets/shopping-bag (1).svg" alt="carrito-container" width="32"/>
+                   <img id=carrito-container2 src="./assets/shopping-bag (1).svg" alt="carrito-container" width="32"/>
                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">${totalItemsCarrito()}
                    </span>
                    </a>`;

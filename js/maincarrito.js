@@ -9,11 +9,11 @@ function eliminarProducto(id) {
 }
 
 
-/*function totalPagarCarrito() {
+function totalPagarCarrito() {
   const productos = cargarProductosCarrito();
 
   return productos.reduce((total, item) => total += item.cantidad * item.precio, 0);
-}*/
+}
 
 
 function renderProductosCarrito() {
@@ -37,7 +37,7 @@ function renderProductosCarrito() {
       }
 
       salida += `<tr>
-         <td colspan="3">Total a Pagar</td>
+         <td colspan="3" Total a Pagar</td>
          <td>$${totalPagarCarrito()}</td>
          <td>&nbsp;</td>
          <td>&nbsp;</td>
@@ -54,3 +54,4 @@ function renderProductosCarrito() {
   renderProductosCarrito();
   renderBotonCarrito();
   
+
