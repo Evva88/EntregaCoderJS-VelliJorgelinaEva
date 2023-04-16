@@ -27,13 +27,13 @@ class Cliente {
      arrayClientes.push(cliente);
      console.log(arrayClientes);
    
-     // Almacenar los datos en localStorage
+     
      localStorage.setItem("arrayClientes", JSON.stringify(arrayClientes));
    
      formulario.reset();
    });
    
-   // Obtener los datos del localStorage y asignarlos a la variable arrayClienteAgregado
+  
    let arrayClienteAgregado = JSON.parse(localStorage.getItem("arrayClientes"));
    console.log(arrayClienteAgregado);
    
