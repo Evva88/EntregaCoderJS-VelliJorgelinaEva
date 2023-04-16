@@ -32,12 +32,12 @@ function renderProductosCarrito() {
           <td>${producto.precio}</td>
           <td>${producto.cantidad} X $${producto.precio}</td>
           <td>${producto.cantidad * producto.precio}</td>
-          <td class="text-end"><button class="btn btn-warning" onclick="eliminarProducto(${producto.id});" title="Eliminar Producto"><img src="../assets/x.svg" alt="Eliminar Producto" width="23" /></button></td>
+          <td id="cont.cruz" class="text-end"><button class="btn btn-warning" onclick="eliminarProducto(${producto.id});" title="Eliminar Producto"><img id=cruz src="../assets/x.svg" alt="Eliminar Producto" width="23" /></button></td>
           </tr>`;
       }
 
       salida += `<tr>
-         <td colspan="3" Total a Pagar</td>
+         <td colspan="4">Total a Pagar</td>
          <td>$${totalPagarCarrito()}</td>
          <td>&nbsp;</td>
          <td>&nbsp;</td>
