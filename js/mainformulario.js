@@ -37,3 +37,14 @@ class Cliente {
    let arrayClienteAgregado = JSON.parse(localStorage.getItem("arrayClientes"));
    console.log(arrayClienteAgregado);
    
+  function saludo() {
+    Swal.fire({
+      title: 'Gracias por registrarte',
+      width: 600,
+      padding: '3em',
+      color: '#716add',
+      background: 'url(../assets/fondo.jpg', 
+    });
+  }
+  
+  document.getElementById("btn-enviar").addEventListener("click", saludo);
